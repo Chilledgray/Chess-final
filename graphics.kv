@@ -1,0 +1,103 @@
+#:import menu menu
+#:import stats stats
+#:import bars bars
+#:import Factory kivy.factory.Factory
+
+
+WidgetM:
+
+<WidgetM>:
+
+    menu_widget: menu_widget
+    stats_widget: stats_widget
+    bars_widget: bars_widget
+
+
+    Menu:
+        id: menu_widget
+    StatsWidget:
+        id: stats_widget
+        opacity: 0
+    BarsWidget:
+        id: bars_widget
+        opacity: 0
+
+
+
+
+
+<ChessBoard>:
+    menu_button: menu
+    Button:
+        id: menu
+        background_normal: "barss.png"
+        background_color: 0.5,.7,.7,1
+        #on_press: app.widget_m.bar_press() if app.widget_m else None
+        disabled: not app.widget_m.play if app.widget_m else True
+        on_release: Factory.BarsPop().open()
+
+    Label:
+        text: ""
+    Label:
+        text: ""
+    Label:
+        text: ""
+    Label:
+        text: ""
+    Label:
+        text: ""
+    Label:
+        text: ""
+    Label:
+        text: ""
+
+
+<ChessSquare>:
+    canvas.before:
+        BorderImage:
+            source: self.tile_source
+            pos: self.pos
+            size: self.size
+
+
+<BarsPop@Popup>:
+
+    title: "Menu"
+
+    size_hint: .2,1
+    pos_hint: {"x": 0, "top":1}
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: .3, 1
+
+        Button:
+            text: "Draw"
+            font_size: 30
+            font_name: "ARCADECLASSIC"
+            size_hint: 1, .2
+            on_press:
+                app.widget_m.children[0].draw() if hasattr(app.widget_m.children[0], 'draw') else None
+                root.dismiss()
+
+        Button:
+            text: "Resign"
+            font_size: 30
+            font_name: "ARCADECLASSIC"
+            size_hint: 1, .2
+            on_press:
+                app.widget_m.children[0].resign() if hasattr(app.widget_m.children[0], 'resign') else None
+                root.dismiss()
+
+        Button:
+            text: "Quit"
+            font_size: 30
+            font_name: "ARCADECLASSIC"
+            size_hint: 1, .2
+            on_release: app.stop()
+
+        Button:
+            size_hint: 1,.6
+            disabled: True
+
+
