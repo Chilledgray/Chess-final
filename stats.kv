@@ -1,0 +1,163 @@
+
+
+<StatsWidget>:
+
+    canvas.before:
+
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            Color:
+                rbga: 0, 0, 0, 0.95
+
+
+    BoxLayout:
+        pos_hint: {'center_x': 0.5}
+        orientation: 'vertical'
+
+        GridLayout:
+            cols: 6
+            size_hint: 1,.2
+
+            Label:
+                size_hint: 1, 0.2
+                text: "PLAYER"
+                bold: True
+                font_size: 40
+                font_name: "ARCADECLASSIC"
+                color: 1, 1, 1, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.2, 0.2, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        Color:
+                            rbga: 0, 0, 0, 0.95
+
+
+            Label:
+                size_hint: 1, 0.2
+                text: "TOTAL"
+                bold: True
+                font_size: 40
+                font_name: "ARCADECLASSIC"
+                color: 1, 1, 0, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.2, 0.2, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        Color:
+                            rbga: 0, 0, 0, 0.95
+
+
+            Label:
+                size_hint: 1, 0.2
+                text: "WINS"
+                bold: True
+                font_size: 40
+                font_name: "ARCADECLASSIC"
+                color: 0.1, 0.9, 0.1, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.2, 0.2, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        Color:
+                            rbga: 0, 0, 0, 0.95
+
+
+            Label:
+                size_hint: 1, 0.2
+                text: "LOSSES"
+                bold: True
+                font_size: 40
+                font_name: "ARCADECLASSIC"
+                color: 0.9, 0.2, 0.2, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.2, 0.2, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        Color:
+                            rbga: 0, 0, 0, 0.95
+
+
+            Label:
+                size_hint: 1, 0.2
+                text: "DRAWS"
+                bold: True
+                font_size: 40
+                font_name: "ARCADECLASSIC"
+                color: 0.7, 0.7, 0.7, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.2, 0.2, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        Color:
+                            rbga: 0, 0, 0, 0.95
+
+
+            Label:
+                size_hint: 1, 0.2
+                text: "WIN PERCENT"
+                bold: True
+                font_size: 40
+                font_name: "ARCADECLASSIC"
+                color: 1, 0.8, 0, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.2, 0.2, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        Color:
+                            rbga: 0, 0, 0, 0.95
+
+
+        ScrollView:
+            size_hint: 1,.8
+            do_scroll_x: False
+            bar_width: '14dp'
+            bar_color: 1, 0.8, 0, 1
+            bar_inactive_color: 0.3, 0.3, 0.3, 0.5
+
+            GridLayout:
+                id: player_list
+                cols: 6
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '65sp'
+                row_force_default: True
+
+    AnchorLayout:
+        anchor_x:'left'
+        anchor_y:'bottom'
+        Button:
+            background_normal: "house_icon.png"
+            size_hint: .07,.07
+            on_press: root.parent.home()
